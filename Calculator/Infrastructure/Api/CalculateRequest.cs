@@ -8,5 +8,11 @@ public sealed class CalculateRequest
     [JsonPropertyName("expr")]
     public required string Expr { get; init; }
 
-    public CalculateCommand ToCommand() => new CalculateCommand(Expr);
+    public CalculateCommand ToCommand()
+    {
+        return new CalculateCommand
+        { 
+            Expr = Expr
+        };   
+    }
 }
