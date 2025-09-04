@@ -1,4 +1,5 @@
 using System.Reflection;
+using Calculator.Domain.Services;
 using Calculator.Infrastructure.Db;
 using EnsureThat;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,8 @@ builder.Services.AddDbContext<Context>(options =>
             providerOptions.MigrationsHistoryTable(HistoryRepository.DefaultTableName);
         });
 });
+
+builder.Services.AddTransient<ICalculateService, CalculateService>();
 
 builder.Services.AddSwaggerGen();
 
