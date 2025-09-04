@@ -4,4 +4,7 @@ using MediatR;
 
 namespace Calculator.Application.UseCase.Calculate;
 
-public sealed class CalculateCommand(string Expr) : IRequest<Result<CalculationResultDto>>;
+public sealed class CalculateCommand : IRequest<Result<CalculationResultDto>>
+{
+    public required string Expr { get; init; }
+}
