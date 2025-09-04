@@ -1,16 +1,30 @@
-﻿using Calculator.Domain.Models;
+﻿using Calculator.Domain.Errors;
+using Calculator.Domain.Models;
+using FluentResults;
+using IronPython.Hosting;
 
 namespace Calculator.Domain.Services;
 
 public interface ICalculateService
 {
-    Calculation Calculate(string expr);
+    Result<Calculation> Calculate(string expr);
 }
 
 public sealed class CalculateService : ICalculateService
 {
-    public Calculation Calculate(string expr)
+    public Result<Calculation> Calculate(string expr)
     {
-        throw new NotImplementedException();
+        var engine = Python.CreateEngine();
+        var scope = engine.CreateScope();
+
+        try
+        {
+            var res = engine.Execute(expr, scope).ToString();
+            return new Calculation(expr, res);
+        }
+        catch (Exception ex)
+        {
+            return new InvalidExprError(ex.Message);
+        }
     }
 }

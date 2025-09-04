@@ -1,4 +1,5 @@
 ﻿using Calculator.Application.Dto;
+using Calculator.Domain.Models;
 using Calculator.Domain.Services;
 using Calculator.Infrastructure.Db;
 using FluentResults;
