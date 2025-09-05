@@ -1,7 +1,6 @@
 .divider {
   height: 2px;
   width: 100%;
-
   margin: 10px auto;
 
   background-color: var(--text-primary);
@@ -11,4 +10,7 @@
 .calc {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+
+  height: 100%;
 }

@@ -15,6 +15,7 @@
   font-weight: 500;
 
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
 
@@ -35,5 +36,23 @@
   &.accent {
     --btn-bg-color: var(--bg-btn-accent);
     --text-primary: var(--text-accent);
+  }
+
+  @media (max-height: 1200px) {
+    width: 80px;
+    height: 80px;
+    font-size: 36px;
+  }
+
+  @media (max-height: 992px) {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+  }
+
+  @media (max-height: 768px) {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
   }
 }

@@ -1,10 +1,24 @@
 .wrapper {
-  height: 920px;
   width: 580px;
+  height: auto;
 
-  margin: 40px auto;
   padding: 45px 42px;
 
   border-radius: 1.5em;
   background-color: var(--bg-neutral);
+
+  @media (max-height: 1200px) {
+    width: 480px;
+    padding: 35px 32px;
+  }
+
+  @media (max-height: 992px) {
+    width: 400px;
+    padding: 28px 24px;
+  }
+
+  @media (max-height: 768px) {
+    width: 360px;
+    padding: 20px;
+  }
 }

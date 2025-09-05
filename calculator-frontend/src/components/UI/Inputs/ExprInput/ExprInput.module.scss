@@ -14,4 +14,16 @@
   &:focus {
     outline: none;
   }
+
+  @media (max-height: 1200px) {
+    font-size: 4em;
+  }
+
+  @media (max-height: 992px) {
+    font-size: 3em;
+  }
+
+  @media (max-height: 768px) {
+    font-size: 2em;
+  }
 }
