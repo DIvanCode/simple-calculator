@@ -12,3 +12,10 @@ services:
       POSTGRES_DB: postgres
     volumes:
       - calculator-postgres:/var/lib/postgresql/data
+  calculator:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./appsettings.Docker.json:/App/appsettings.json:ro
+    
