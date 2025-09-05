@@ -1,5 +1,5 @@
 import { ChangeEventHandler } from 'react';
-import styles from './ExprInput.module.css';
+import styles from './ExprInput.module.scss';
 
 type Props = {
   value: string;
