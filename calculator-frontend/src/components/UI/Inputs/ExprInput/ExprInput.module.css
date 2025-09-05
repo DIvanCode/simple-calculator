@@ -1,0 +1,13 @@
+.exprInput {
+  background-color: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 5em;
+  font-weight: var(--font-weight-regular);
+  width: 100%;
+  text-align: right;
+
+  &:focus {
+    outline: none;
+  }
+}
