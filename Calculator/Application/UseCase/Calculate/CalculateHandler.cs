@@ -1,5 +1,4 @@
 ﻿using Calculator.Application.Dto;
-using Calculator.Domain.Models;
 using Calculator.Domain.Services;
 using Calculator.Infrastructure.Db;
 using FluentResults;
@@ -12,6 +11,21 @@ public sealed class CalculateHandler(Context context, ICalculateService calculat
 {
     public async Task<Result<CalculationResultDto>> Handle(CalculateCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var calcResult = calculateService.Calculate(request.Expr);
+        
+        if (calcResult.IsFailed)
+        {
+            return Result.Fail<CalculationResultDto>(calcResult.Errors);
+        }
+
+        await context.Calculations.AddAsync(calcResult.Value, cancellationToken);
+        await context.SaveChangesAsync(cancellationToken);
+
+        var resultDto = new CalculationResultDto()
+        {
+            Res = calcResult.Value.Res
+        };
+        
+        return Result.Ok(resultDto);
     }
 }
