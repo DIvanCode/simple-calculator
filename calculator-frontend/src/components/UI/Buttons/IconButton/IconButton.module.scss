@@ -17,14 +17,12 @@
   }
 
   svg {
-    @media (max-height: 1200px) {
-      width: 48px;
-      height: 48px;
-    }
+    width: 32px;
+    height: 32px;
 
-    @media (max-height: 992px) {
-      width: 32px;
-      height: 32px;
+    @media (min-height: 900px) {
+      width: 64px;
+      height: 64px;
     }
   }
 }

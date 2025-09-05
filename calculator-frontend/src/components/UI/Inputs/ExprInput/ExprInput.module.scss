@@ -6,7 +6,7 @@
   background-color: transparent;
   color: var(--text-primary);
 
-  font-size: 5em;
+  font-size: 3em;
   font-weight: var(--font-weight-regular);
 
   text-align: right;
@@ -15,15 +15,7 @@
     outline: none;
   }
 
-  @media (max-height: 1200px) {
+  @media (min-height: 900px) {
     font-size: 4em;
-  }
-
-  @media (max-height: 992px) {
-    font-size: 3em;
-  }
-
-  @media (max-height: 768px) {
-    font-size: 2em;
   }
 }

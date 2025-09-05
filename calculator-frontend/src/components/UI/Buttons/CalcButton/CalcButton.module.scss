@@ -2,8 +2,8 @@
   --btn-bg-color: var(--bg-btn-neutral);
   --btn-text-color: var(--text-primary);
 
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
 
   border: none;
   border-radius: 50%;
@@ -11,7 +11,7 @@
   background-color: var(--btn-bg-color);
   color: var(--btn-text-color);
 
-  font-size: 50px;
+  font-size: 24px;
   font-weight: 500;
 
   cursor: pointer;
@@ -38,21 +38,10 @@
     --text-primary: var(--text-accent);
   }
 
-  @media (max-height: 1200px) {
-    width: 80px;
-    height: 80px;
-    font-size: 36px;
-  }
+  @media (min-height: 900px) {
+    width: 100px;
+    height: 100px;
 
-  @media (max-height: 992px) {
-    width: 70px;
-    height: 70px;
-    font-size: 28px;
-  }
-
-  @media (max-height: 768px) {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
+    font-size: 50px;
   }
 }
