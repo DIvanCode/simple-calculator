@@ -2,6 +2,7 @@
 using Calculator.Infrastructure.Db;
 using FluentResults;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Calculator.Application.UseCase.History;
 
@@ -9,6 +10,11 @@ public sealed class HistoryHandler(Context context) : IRequestHandler<HistoryQue
 {
     public async Task<Result<List<CalculationDto>>> Handle(HistoryQuery request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var calculations = await context.Calculations
+            .OrderByDescending(c => c.Id)
+            .Select(c => new CalculationDto { Expr = c.Expr, Res = c.Res })
+            .ToListAsync();
+        return Result.Ok(calculations);
+
     }
 }
