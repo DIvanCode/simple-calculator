@@ -15,10 +15,10 @@ public sealed class CalculateHandler(Context context, ICalculateService calculat
         
         if (calcResult.IsFailed)
         {
-            return Result.Fail<CalculationResultDto>(calcResult.Errors);
+            return calcResult.ToResult();
         }
 
-        await context.Calculations.AddAsync(calcResult.Value, cancellationToken);
+        context.Calculations.Add(calcResult.Value);
         await context.SaveChangesAsync(cancellationToken);
 
         var resultDto = new CalculationResultDto()
@@ -26,6 +26,6 @@ public sealed class CalculateHandler(Context context, ICalculateService calculat
             Res = calcResult.Value.Res
         };
         
-        return Result.Ok(resultDto);
+        return resultDto;
     }
 }
