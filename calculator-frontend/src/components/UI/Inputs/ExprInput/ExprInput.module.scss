@@ -15,7 +15,7 @@
     outline: none;
   }
 
-  @media (min-height: 900px) {
+  @media (min-height: 900px) and (min-width: 600px) {
     font-size: 4em;
   }
 }

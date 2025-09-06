@@ -38,7 +38,7 @@
     --text-primary: var(--text-accent);
   }
 
-  @media (min-height: 900px) {
+  @media (min-height: 900px) and (min-width: 600px) {
     width: 100px;
     height: 100px;
 

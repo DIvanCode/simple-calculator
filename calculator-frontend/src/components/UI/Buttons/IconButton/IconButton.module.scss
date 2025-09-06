@@ -20,7 +20,7 @@
     width: 32px;
     height: 32px;
 
-    @media (min-height: 900px) {
+    @media (min-height: 900px) and (min-width: 600px) {
       width: 64px;
       height: 64px;
     }
