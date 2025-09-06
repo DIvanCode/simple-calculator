@@ -3,6 +3,8 @@ import styles from "./HistoryItem.module.scss"
 import { HistoryItemButton } from "../Buttons/HistoryItemButton/HistoryItemButton";
 
 type Props = {
+    closeHistory: () => void
+    setExpr: (expr: string) => void
     expr: string,
     result: string
 }
@@ -10,7 +12,7 @@ type Props = {
 const HistoryItem = (props: Props) => {
     return (
         <div>
-            <HistoryItemButton onClick={() => console.log("hi")}>
+            <HistoryItemButton onClick={() => {props.closeHistory(); props.setExpr(props.expr)}}>
                 <div className={styles.calculation}>
                     <div className={styles.expr}>
                         {props.expr}

@@ -34,6 +34,17 @@ export default class CalculateService {
           resolve({
             data: {
               history: [
+                { expr: '1+1', res: '2222222222222222222222222222222222' },
+                { expr: '1+1', res: '2' },
+                { expr: '1+1', res: '2' },
+                { expr: '1+1', res: '2' },
+                { expr: '1+1', res: '2' },
+                { expr: '1+1', res: '2' },
+                { expr: '1+1', res: '2' },
+                { expr: '1+1', res: '2' },
+                { expr: '1+1', res: '2' },
+                { expr: '1+1', res: '2' },
+                { expr: '1+1', res: '2' },
                 { expr: '1+1', res: '2' },
                 { expr: '1+1', res: '2' },
                 { expr: '1+1', res: '2' },
@@ -45,4 +56,3 @@ export default class CalculateService {
     );
   }
 }
-

@@ -4,6 +4,7 @@ import { ArrowBack } from "../UI/Icons/ArrowBack";
 
 type Props = {
   closeHistory: () => void
+  setExpr: (expr: string) => void
 };
 
 export const CalcHistory = (props: Props) => {
@@ -15,7 +16,7 @@ export const CalcHistory = (props: Props) => {
         </IconButton>
       </header>
 
-      <HistoryList />
+      <HistoryList closeHistory={props.closeHistory} setExpr={props.setExpr}/>
     </div>
   );
 };

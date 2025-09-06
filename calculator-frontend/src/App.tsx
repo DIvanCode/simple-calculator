@@ -11,7 +11,7 @@ export const App = () => {
   return (
     <Layout>
       {isHistoryOpen ? (
-        <CalcHistory closeHistory={() => setIsHistoryOpen(false)} />
+        <CalcHistory closeHistory={() => setIsHistoryOpen(false)} setExpr={setExpr} />
       ) : (
         <Calculator
           onHistoryClick={() => setIsHistoryOpen(true)}
