@@ -26,20 +26,20 @@ export const Calculator = ({ expr, setExpr, onHistoryClick }: Props) => {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (
-    event: FormEvent<HTMLFormElement>,
+    event: FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
     if (!expr || loading) return;
 
     setLoading(true);
     CalculateService.calculate(expr)
-      .then((res) => setExpr(res.data.result))
+      .then((response) => setExpr(response.data.res))
       .catch((err) => alert(err.message))
       .finally(() => setLoading(false));
   };
 
   const handleExprInputChange: ChangeEventHandler<HTMLInputElement> = (
-    event: ChangeEvent<HTMLInputElement>,
+    event: ChangeEvent<HTMLInputElement>
   ) => {
     if (loading) return;
 

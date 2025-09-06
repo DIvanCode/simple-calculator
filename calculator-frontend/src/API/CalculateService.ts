@@ -1,17 +1,22 @@
 // import axios from "axios";
 
+type HistoryItem = {
+  expr: string;
+  res: string;
+};
+
 export default class CalculateService {
-  static async calculate(expr: string): Promise<{ data: { result: string } }> {
+  static async calculate(expr: string): Promise<{ data: { res: string } }> {
     //return await axios.post("/api/calculate", { expr });
 
 
     // TODO: mocked for now
     console.warn('[MOCK] Mocking calculation...');
-    return await new Promise<{ data: { result: string } }>((resolve) =>
+    return await new Promise<{ data: { res: string } }>((resolve) =>
       setTimeout(() => {
         resolve({
           data: {
-            result: String(eval(expr)),
+            res: String(eval(expr)),
           },
         });
         // reject(new Error("Something went wrong")); // uncomment & add reject to func to mock error
@@ -19,7 +24,7 @@ export default class CalculateService {
     );
   }
 
-  static async getHistory() {
+  static async getHistory(): Promise<{ data: { history: HistoryItem[] } }> {
     // return await axios.get("/api/history");
     // TODO: mocked for now
     console.warn('[MOCK] Mocking history...');
