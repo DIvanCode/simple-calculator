@@ -13,8 +13,8 @@ public sealed class HistoryHandler(Context context) : IRequestHandler<HistoryQue
         var calculations = await context.Calculations
             .OrderByDescending(c => c.Id)
             .Select(c => new CalculationDto { Expr = c.Expr, Res = c.Res })
-            .ToListAsync();
-        return Result.Ok(calculations);
+            .ToListAsync(cancellationToken);
+        return calculations;
 
     }
 }
