@@ -12,10 +12,26 @@ services:
       POSTGRES_DB: postgres
     volumes:
       - calculator-postgres:/var/lib/postgresql/data
+
+  schema-updater:
+    build: .
+    volumes:
+      - ./appsettings.Docker.json:/App/appsettings.json:ro
+    # this weird huge command just to parse ConnectionString from appsettings.json
+    command: >
+      bash -c "
+        echo /root/.dotnet/tools/dotnet-ef database update \\
+          --connection \"\$(cat /App/appsettings.json | sed -n 's/.*ConnectionString\": \"\\(.*\\)\".*/\\1/p')\" \\
+          --project /Source
+      "
+
   calculator:
     build: .
     ports:
       - "8080:8080"
     volumes:
       - ./appsettings.Docker.json:/App/appsettings.json:ro
+    depends_on:
+      schema-updater:
+        condition: service_completed_successfully
     
