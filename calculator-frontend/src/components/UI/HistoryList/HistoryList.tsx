@@ -1,37 +1,57 @@
-import React, { useEffect, useState } from "react";
-import HistoryItem from "./HistoryItem";
-import CalculateService from "@/API/CalculateService";
-import styles from "./HistoryListSlider.module.scss"
+import React, { useEffect, useState } from 'react';
+import HistoryItem from './HistoryItem';
+import CalculateService from '@/API/CalculateService';
+import styles from './HistoryListSlider.module.scss';
+import Loader from '../Loader/Loader';
 
 type Props = {
-    closeHistory: () => void
-    setExpr: (expr: string) => void
-}
+  closeHistory: () => void;
+  setExpr: (expr: string) => void;
+};
 
 interface HistoryItem {
-    expr: string;
-    res: string;
+  expr: string;
+  res: string;
 }
 
 const HistoryList = (props: Props) => {
-    const [historyItems, setHistoryItems] = useState <HistoryItem[]>()
+  const [historyItems, setHistoryItems] = useState<HistoryItem[]>();
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchHistory = async () => {
-            const history = await CalculateService.getHistory();
-            setHistoryItems(history.data.history);
-            console.log(historyItems);
-        };
-        fetchHistory();
-    }, []);
+  useEffect(() => {
+    const fetchHistory = async () => {
+      try {
+        setLoading(true);
+        const history = await CalculateService.getHistory();
+        setHistoryItems(history.data.history);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchHistory();
+  }, []);
 
-    return (
-        <div className={styles.scrollerContainer}>
-            <div className={styles.scrollerContent}>
-                {historyItems?.map((item) => <HistoryItem expr={item.expr} result={item.res} closeHistory={props.closeHistory} setExpr={props.setExpr}/>)}
-            </div>
-        </div>
-    )
-}
+  if (loading) {
+    return <Loader />;
+  }
+
+  return (
+    <div className={styles.scrollerContainer}>
+      <div className={styles.scrollerContent}>
+        {historyItems?.map((item, index) => (
+          <HistoryItem
+            expr={item.expr}
+            result={item.res}
+            closeHistory={props.closeHistory}
+            setExpr={props.setExpr}
+            key={index}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default HistoryList;

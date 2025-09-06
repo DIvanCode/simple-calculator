@@ -1,19 +1,19 @@
-.calculation{
-    color: white;
-    display: flex;
-    flex-direction: column;
-    .expr{
-        text-align: right;
-        color: lightgray;
-        font-size: 12px;
-        margin-bottom: 2px;
-        text-overflow: ellipsis;
-    }
+.calculation {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  .expr {
+    text-align: right;
+    color: lightgray;
+    font-size: 12px;
+    margin-bottom: 2px;
+    overflow: hidden;
+  }
 
-    .result{
-        font-size: 24px;
-        text-align: right;
-        margin-bottom: 15px;
-        text-overflow: ellipsis;
-    }
+  .result {
+    font-size: 24px;
+    text-align: right;
+    margin-bottom: 15px;
+    overflow: hidden;
+  }
 }
