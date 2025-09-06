@@ -8,7 +8,7 @@ module.exports = {
   parserOptions: {
     project: ['tsconfig.json'],
   },
-  plugins: ['react-hooks', 'jsx-a11y'],
+  plugins: ['react-hooks', 'jsx-a11y', 'import'],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'prettier/prettier': [

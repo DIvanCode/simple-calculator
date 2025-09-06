@@ -1,0 +1,50 @@
+.calcButton {
+  --btn-bg-color: var(--bg-btn-neutral);
+  --btn-text-color: var(--text-primary);
+
+  width: 60px;
+  height: 60px;
+
+  border: none;
+  border-radius: 50%;
+
+  background-color: var(--btn-bg-color);
+  color: var(--btn-text-color);
+
+  font-size: 24px;
+  font-weight: 500;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--btn-bg-color) 85%, white);
+  }
+
+  &:active {
+    background-color: color-mix(in srgb, var(--btn-bg-color) 75%, black);
+    transform: scale(0.95);
+  }
+
+  &.primary {
+    --btn-bg-color: var(--bg-btn-primary);
+    --text-primary: var(--text-accent);
+  }
+
+  &.accent {
+    --btn-bg-color: var(--bg-btn-accent);
+    --text-primary: var(--text-accent);
+  }
+
+  @media (min-height: 900px) and (min-width: 600px) {
+    width: 100px;
+    height: 100px;
+
+    font-size: 36px;
+  }
+}

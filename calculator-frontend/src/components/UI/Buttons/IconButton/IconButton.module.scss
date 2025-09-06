@@ -1,0 +1,28 @@
+.iconButton {
+  border: none;
+
+  background-color: transparent;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover path {
+    fill-opacity: 1;
+    transition: fill-opacity 0.2s ease-in-out;
+  }
+
+  &:active path {
+    fill-opacity: 0.5;
+    transition: fill-opacity 0.2s ease-in-out;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+
+    @media (min-height: 900px) and (min-width: 600px) {
+      width: 64px;
+      height: 64px;
+    }
+  }
+}

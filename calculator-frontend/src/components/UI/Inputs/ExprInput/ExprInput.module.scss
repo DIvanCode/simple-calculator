@@ -1,0 +1,21 @@
+.exprInput {
+  width: 100%;
+
+  border: none;
+
+  background-color: transparent;
+  color: var(--text-primary);
+
+  font-size: 3em;
+  font-weight: var(--font-weight-regular);
+
+  text-align: right;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media (min-height: 900px) and (min-width: 600px) {
+    font-size: 4em;
+  }
+}

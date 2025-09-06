@@ -1,0 +1,17 @@
+.wrapper {
+  width: 360px;
+  height: 520px;
+
+  padding: 20px;
+
+  border-radius: 1.5em;
+  background-color: var(--bg-neutral);
+
+  @media (min-height: 900px) and (min-width: 600px) {
+    width: 580px;
+    height: 900px;
+
+    padding: 45px;
+    border-radius: 2em;
+  }
+}

@@ -1,0 +1,11 @@
+.calcButtonsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  margin-top: 20px;
+  gap: 12px 20px;
+
+  @media (min-height: 900px) and (min-width: 600px) {
+    gap: 30px;
+  }
+}
