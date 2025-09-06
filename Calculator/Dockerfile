@@ -4,6 +4,8 @@ EXPOSE 5050
 
 WORKDIR /Source
 
+RUN dotnet tool install --global dotnet-ef
+
 COPY . .
 
 RUN dotnet publish Calculator.sln -p:PublishDir=/Build
