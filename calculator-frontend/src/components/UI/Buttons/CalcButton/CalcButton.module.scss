@@ -17,7 +17,10 @@
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
 
   &:hover {
     background-color: color-mix(in srgb, var(--btn-bg-color) 85%, white);
@@ -38,7 +41,7 @@
     --text-primary: var(--text-accent);
   }
 
-  @media (min-height: 900px) {
+  @media (min-height: 900px) and (min-width: 600px) {
     width: 100px;
     height: 100px;
 
