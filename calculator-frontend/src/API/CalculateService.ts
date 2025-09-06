@@ -7,7 +7,6 @@ export default class CalculateService {
 
     // TODO: mocked for now
     console.warn('[MOCK] Mocking calculation...');
-    console.warn('[MOCK] Mocking calculation...');
     return await new Promise<{ data: { result: string } }>((resolve) =>
       setTimeout(() => {
         resolve({
