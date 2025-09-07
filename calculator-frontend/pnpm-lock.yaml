@@ -75,6 +75,9 @@ importers:
       vite:
         specifier: ^7.1.2
         version: 7.1.4(@types/node@24.3.0)(sass@1.92.1)
+      vite-plugin-environment:
+        specifier: ^1.1.3
+        version: 1.1.3(vite@7.1.4(@types/node@24.3.0)(sass@1.92.1))
 
 packages:
 
@@ -2074,6 +2077,11 @@ packages:
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
+
+  vite-plugin-environment@1.1.3:
+    resolution: {integrity: sha512-9LBhB0lx+2lXVBEWxFZC+WO7PKEyE/ykJ7EPWCq95NEcCpblxamTbs5Dm3DLBGzwODpJMEnzQywJU8fw6XGGGA==}
+    peerDependencies:
+      vite: '>= 2.7'
 
   vite@7.1.4:
     resolution: {integrity: sha512-X5QFK4SGynAeeIt+A7ZWnApdUyHYm+pzv/8/A57LqSGcI88U6R6ipOs3uCesdc6yl7nl+zNO0t8LmqAdXcQihw==}
@@ -4299,6 +4307,10 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
+
+  vite-plugin-environment@1.1.3(vite@7.1.4(@types/node@24.3.0)(sass@1.92.1)):
+    dependencies:
+      vite: 7.1.4(@types/node@24.3.0)(sass@1.92.1)
 
   vite@7.1.4(@types/node@24.3.0)(sass@1.92.1):
     dependencies:
