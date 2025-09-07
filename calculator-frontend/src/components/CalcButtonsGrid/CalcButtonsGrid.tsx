@@ -18,7 +18,7 @@ const CalcButtonsGridComponent = ({ setExpr }: Props) => {
       <CalcButton onClick={() => handleClick('(')}>{'('}</CalcButton>
       <CalcButton onClick={() => handleClick(')')}>{')'}</CalcButton>
       <CalcButton variant="primary" onClick={() => handleClick('%')}>
-        {'%'}
+        <code>MOD</code>
       </CalcButton>
 
       <CalcButton onClick={() => handleClick('7')}>{'7'}</CalcButton>

@@ -10,6 +10,7 @@ export const ExprInput = ({ value, onChange }: Props) => {
     <input
       id="exprInput"
       type="text"
+      autoComplete="off"
       className={styles.exprInput}
       value={value}
       onChange={onChange}
