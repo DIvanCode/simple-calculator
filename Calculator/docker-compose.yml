@@ -15,22 +15,22 @@ services:
 
   schema-updater:
     build: .
-    volumes:
-      - ./appsettings.Docker.json:/App/appsettings.json:ro
-    # this weird huge command just to parse ConnectionString from appsettings.json
-    command: >
-      bash -c "
-        echo /root/.dotnet/tools/dotnet-ef database update \\
-          --connection \"\$(cat /App/appsettings.json | sed -n 's/.*ConnectionString\": \"\\(.*\\)\".*/\\1/p')\" \\
-          --project /Source
-      "
+    environment:
+      Db__ConnectionString: Server=calculator-postgres:5432;Database=postgres;Username=postgres;Password=postgres
+    command: |
+      bash -c '/root/.dotnet/tools/dotnet-ef database update \
+        --connection "$$Db__ConnectionString" \
+        --project /Source'
 
   calculator:
     build: .
     ports:
       - "8080:8080"
     volumes:
-      - ./appsettings.Docker.json:/App/appsettings.json:ro
+      - .:/App:ro
+    environment:
+      Db__ConnectionString: Server=calculator-postgres:5432;Database=postgres;Username=postgres;Password=postgres
+      ASPNETCORE_ENVIRONMENT: Development
     depends_on:
       schema-updater:
         condition: service_completed_successfully
