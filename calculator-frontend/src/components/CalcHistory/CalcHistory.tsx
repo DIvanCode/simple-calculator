@@ -1,3 +1,23 @@
-export const CalcHistory = () => {
-  return <div>CalcHistory</div>;
+import { IconButton } from '../UI/Buttons/IconButton/IconButton';
+import HistoryList from '../HistoryList/HistoryList';
+import { ArrowBack } from '../UI/Icons/ArrowBack';
+import styles from './CalcHistory.module.scss';
+
+type Props = {
+  closeHistory: () => void;
+  setExpr: (expr: string) => void;
+};
+
+export const CalcHistory = (props: Props) => {
+  return (
+    <div className={styles.calcHistory}>
+      <header>
+        <IconButton onClick={props.closeHistory}>
+          <ArrowBack />
+        </IconButton>
+      </header>
+
+      <HistoryList closeHistory={props.closeHistory} setExpr={props.setExpr} />
+    </div>
+  );
 };

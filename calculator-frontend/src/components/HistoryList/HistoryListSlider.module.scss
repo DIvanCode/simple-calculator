@@ -1,0 +1,14 @@
+.scrollerContainer {
+  height: 90%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: white transparent;
+}
+
+.scrollerContent {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}

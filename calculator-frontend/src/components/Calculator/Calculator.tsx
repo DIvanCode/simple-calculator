@@ -26,7 +26,7 @@ export const Calculator = ({ expr, setExpr, onHistoryClick }: Props) => {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (
-    event: FormEvent<HTMLFormElement>
+    event: FormEvent<HTMLFormElement>,
   ) => {
     event.preventDefault();
     if (!expr || loading) return;
@@ -39,7 +39,7 @@ export const Calculator = ({ expr, setExpr, onHistoryClick }: Props) => {
   };
 
   const handleExprInputChange: ChangeEventHandler<HTMLInputElement> = (
-    event: ChangeEvent<HTMLInputElement>
+    event: ChangeEvent<HTMLInputElement>,
   ) => {
     if (loading) return;
 
