@@ -1,5 +1,5 @@
 import { IconButton } from '../UI/Buttons/IconButton/IconButton';
-import HistoryList from '../UI/HistoryList/HistoryList';
+import HistoryList from '../HistoryList/HistoryList';
 import { ArrowBack } from '../UI/Icons/ArrowBack';
 import styles from './CalcHistory.module.scss';
 

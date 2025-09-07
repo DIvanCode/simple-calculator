@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import HistoryItem from './HistoryItem';
 import CalculateService from '@/API/CalculateService';
 import styles from './HistoryListSlider.module.scss';
-import Loader from '../Loader/Loader';
+import Loader from '../UI/Loader/Loader';
 
 type Props = {
   closeHistory: () => void;
@@ -25,7 +25,7 @@ const HistoryList = (props: Props) => {
         const history = await CalculateService.getHistory();
         setHistoryItems(history.data.history);
       } catch (error) {
-        console.log(error);
+        alert(error);
       } finally {
         setLoading(false);
       }
