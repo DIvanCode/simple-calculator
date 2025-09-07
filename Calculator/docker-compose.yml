@@ -10,6 +10,11 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 1s
+      timeout: 0s
+      retries: 30
     volumes:
       - calculator-postgres:/var/lib/postgresql/data
 
@@ -21,6 +26,9 @@ services:
       bash -c '/root/.dotnet/tools/dotnet-ef database update \
         --connection "$$Db__ConnectionString" \
         --project /Source'
+    depends_on:
+      calculator-postgres:
+        condition: service_healthy
 
   calculator:
     build: .
@@ -34,4 +42,6 @@ services:
     depends_on:
       schema-updater:
         condition: service_completed_successfully
+      calculator-postgres:
+        condition: service_healthy
     
