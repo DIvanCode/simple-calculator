@@ -14,7 +14,9 @@ const CalcButtonsGridComponent = ({ setExpr }: Props) => {
 
   return (
     <section className={styles.calcButtonsGrid}>
-      <CalcButton onClick={() => handleClick('')}>{'AC'}</CalcButton>
+      <CalcButton onClick={() => handleClick('')}>
+        <code>AC</code>
+      </CalcButton>
       <CalcButton onClick={() => handleClick('(')}>{'('}</CalcButton>
       <CalcButton onClick={() => handleClick(')')}>{')'}</CalcButton>
       <CalcButton variant="primary" onClick={() => handleClick('%')}>
