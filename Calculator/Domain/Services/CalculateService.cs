@@ -22,7 +22,7 @@ public sealed class CalculateService : ICalculateService
         try
         {
             var res = engine.Execute(expr, scope).ToString();
-            return new Calculation(expr, res);
+            return new Calculation(sourceExpr, res);
         }
         catch (Exception ex)
         {
@@ -32,6 +32,6 @@ public sealed class CalculateService : ICalculateService
 
     private static string ReplacePercent(string expr)
     {
-        return expr.Replace("%", "*0.01");
+        return expr.Replace("%", " *0.01 ");
     }
 }
