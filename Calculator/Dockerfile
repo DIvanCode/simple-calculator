@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0
 
-EXPOSE 5050
+EXPOSE 8080
 
 WORKDIR /Source
 
