@@ -1,8 +1,9 @@
 import { ComponentPropsWithoutRef } from 'react';
 import styles from './CalcButton.module.scss';
+import { ButtonVariant } from '@/types';
 
 type Props = ComponentPropsWithoutRef<'button'> & {
-  variant?: 'default' | 'primary' | 'accent';
+  variant?: ButtonVariant;
 };
 
 export const CalcButton = ({

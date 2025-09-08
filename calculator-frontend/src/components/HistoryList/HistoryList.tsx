@@ -3,27 +3,24 @@ import HistoryItem from './HistoryItem';
 import CalculateService from '@/API/CalculateService';
 import styles from './HistoryListSlider.module.scss';
 import Loader from '../UI/Loader/Loader';
+import { HistoryItemType, HistoryResponse } from '@/types';
+import { EmptyHistory } from '../EmptyHistory/EmptyHistory';
 
 type Props = {
   closeHistory: () => void;
   setExpr: (expr: string) => void;
 };
 
-interface HistoryItem {
-  expr: string;
-  res: string;
-}
-
 const HistoryList = (props: Props) => {
-  const [historyItems, setHistoryItems] = useState<HistoryItem[]>();
+  const [historyItems, setHistoryItems] = useState<HistoryItemType[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchHistory = async () => {
       try {
         setLoading(true);
-        const history = await CalculateService.getHistory();
-        setHistoryItems(history.data);
+        const history: HistoryResponse = await CalculateService.getHistory();
+        setHistoryItems(history.data ?? []);
       } catch (error) {
         alert(error);
       } finally {
@@ -33,22 +30,24 @@ const HistoryList = (props: Props) => {
     fetchHistory();
   }, []);
 
-  if (loading) {
-    return <Loader />;
-  }
-
   return (
     <div className={styles.scrollerContainer}>
       <div className={styles.scrollerContent}>
-        {historyItems?.map((item, index) => (
-          <HistoryItem
-            expr={item.expr}
-            result={item.res}
-            closeHistory={props.closeHistory}
-            setExpr={props.setExpr}
-            key={index}
-          />
-        ))}
+        {loading ? (
+          <Loader />
+        ) : historyItems.length === 0 ? (
+          <EmptyHistory />
+        ) : (
+          historyItems.map((item, index) => (
+            <HistoryItem
+              expr={item.expr}
+              result={item.res}
+              closeHistory={props.closeHistory}
+              setExpr={props.setExpr}
+              key={index}
+            />
+          ))
+        )}
       </div>
     </div>
   );

@@ -1,0 +1,30 @@
+.emptyHistory {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+
+  align-items: center;
+  justify-content: center;
+
+  p {
+    margin: 20px;
+
+    font-size: 1.25em;
+    font-weight: var(--font-weight-regular);
+    color: var(--text-secondary);
+
+    @media (min-height: 900px) and (min-width: 600px) {
+      font-size: 2.5em;
+    }
+  }
+
+  svg {
+    width: 128px;
+    height: 128px;
+
+    @media (min-height: 900px) and (min-width: 600px) {
+      width: 256px;
+      height: 256px;
+    }
+  }
+}

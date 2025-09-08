@@ -1,17 +1,13 @@
+import { CalculateResponse, HistoryResponse } from "@/types";
 import axios from "axios";
 
 
-type HistoryItem = {
-  expr: string;
-  res: string;
-};
-
 export default class CalculateService {
-  static async calculate(expr: string): Promise<{ data: { res: string } }> {
+  static async calculate(expr: string): Promise<CalculateResponse> {
     return await axios.post(`${process.env.BACKEND_URL}/api/calculate`, { expr });
   }
 
-  static async getHistory(): Promise<{ data: { history: HistoryItem[] } }> {
+  static async getHistory(): Promise<HistoryResponse> {
     return await axios.get(`${process.env.BACKEND_URL}/api/history`);
   }
 }
