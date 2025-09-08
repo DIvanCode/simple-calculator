@@ -1,0 +1,14 @@
+﻿volumes:
+  calculator-postgres:
+
+services:
+  calculator-frontend:
+    build:
+      context: .
+      args:
+        BACKEND_URL: http://localhost:8080
+    ports:
+      - "80:80"
+    environment:
+      BACKEND_URL: http://localhost:8080
+   
