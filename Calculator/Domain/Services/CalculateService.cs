@@ -12,26 +12,19 @@ public interface ICalculateService
 
 public sealed class CalculateService : ICalculateService
 {
-    public Result<Calculation> Calculate(string sourceExpr)
+    public Result<Calculation> Calculate(string expr)
     {
-        var expr = ReplacePercent(sourceExpr);
-        
         var engine = Python.CreateEngine();
         var scope = engine.CreateScope();
 
         try
         {
             var res = engine.Execute(expr, scope).ToString();
-            return new Calculation(sourceExpr, res);
+            return new Calculation(expr, res);
         }
         catch (Exception ex)
         {
             return new InvalidExprError(ex.Message);
         }
-    }
-
-    private static string ReplacePercent(string expr)
-    {
-        return expr.Replace("%", " *0.01 ");
     }
 }

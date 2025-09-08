@@ -16,4 +16,4 @@ ARG BACKEND_URL
 
 RUN pnpm build
 
-CMD ["pnpm", "run", "preview", "--host", "0.0.0.0", "--port", "80"]
+CMD ["pnpm", "preview" , "--host", "0.0.0.0", "--port", "80"]

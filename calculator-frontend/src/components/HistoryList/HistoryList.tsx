@@ -23,7 +23,7 @@ const HistoryList = (props: Props) => {
       try {
         setLoading(true);
         const history = await CalculateService.getHistory();
-        setHistoryItems(history.data.history);
+        setHistoryItems(history.data);
       } catch (error) {
         alert(error);
       } finally {
