@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import HistoryItem from './HistoryItem';
+import HistoryItem from '../HistoryItem/HistoryItem';
 import CalculateService from '@/API/CalculateService';
 import styles from './HistoryListSlider.module.scss';
 import Loader from '../UI/Loader/Loader';
 import { HistoryItemType, HistoryResponse } from '@/types';
 import { EmptyHistory } from '../EmptyHistory/EmptyHistory';
+import { AxiosError } from 'axios';
 
 type Props = {
   closeHistory: () => void;
@@ -22,7 +23,7 @@ const HistoryList = (props: Props) => {
         const history: HistoryResponse = await CalculateService.getHistory();
         setHistoryItems(history.data ?? []);
       } catch (error) {
-        alert(error);
+        alert(error instanceof AxiosError ? error.response?.data : error);
       } finally {
         setLoading(false);
       }

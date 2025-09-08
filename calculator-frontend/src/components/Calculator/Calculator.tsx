@@ -14,6 +14,7 @@ import { IconButton } from '../UI/Buttons/IconButton/IconButton';
 import { CalcButtonsGrid } from '../CalcButtonsGrid/CalcButtonsGrid';
 import { ExprInput } from '../UI/Inputs/ExprInput/ExprInput';
 import CalculateService from '@/API/CalculateService';
+import { AxiosError } from 'axios';
 
 type Props = {
   expr: string;
@@ -26,7 +27,7 @@ export const Calculator = ({ expr, setExpr, onHistoryClick }: Props) => {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (
-    event: FormEvent<HTMLFormElement>,
+    event: FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
     if (!expr || loading) return;
@@ -34,12 +35,14 @@ export const Calculator = ({ expr, setExpr, onHistoryClick }: Props) => {
     setLoading(true);
     CalculateService.calculate(expr)
       .then((response) => setExpr(response.data.res))
-      .catch((err) => alert(err.message))
+      .catch((error) =>
+        alert(error instanceof AxiosError ? error.response?.data : error)
+      )
       .finally(() => setLoading(false));
   };
 
   const handleExprInputChange: ChangeEventHandler<HTMLInputElement> = (
-    event: ChangeEvent<HTMLInputElement>,
+    event: ChangeEvent<HTMLInputElement>
   ) => {
     if (loading) return;
 

@@ -1,4 +1,9 @@
-export type ButtonVariant = 'default' | 'primary' | 'secondary';
+export type ButtonVariant = 'default' | 'primary' | 'accent';
+
+
+export type CalcResultType = {
+    res: string;
+}
 
 export type HistoryItemType = {
     expr: string;
@@ -8,4 +13,4 @@ export type HistoryItemType = {
 export type ResponseType<T> = { data: T };
 
 export type HistoryResponse = ResponseType<HistoryItemType[]>;
-export type CalculateResponse = ResponseType<string>;
+export type CalculateResponse = ResponseType<CalcResultType>;
